@@ -35,11 +35,12 @@ mongoose.connection
 //////////////////////////////
 // Models
 //////////////////////////////
-// the people schema
+// the cheese schema
 const CheeseSchema = new mongoose.Schema({
     name: String,
     countryOfOrigin: String,
-    image: String
+    image: String,
+    isOwned: {type: Boolean, default: false}
 }, {timestamps: true})
 
 const Cheese = mongoose.model("Cheese", CheeseSchema)
@@ -61,7 +62,7 @@ app.get("/", (req, res) => {
     res.send("Hello World")
 })
 
-// People index route
+// Cheese index route
 // get request to /cheese, returns all cheeses as json
 app.get("/cheese", async (req, res) => {
     try {
